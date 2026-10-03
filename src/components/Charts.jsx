@@ -3,6 +3,9 @@ import {
   ResponsiveContainer, ReferenceDot, PieChart, Pie, Cell,
   BarChart, Bar, LabelList
 } from 'recharts';
+import { fmt, fmtInt } from '../data'
+
+export const COLORS = { cyan: '#22d3ee', blue: '#3b82f6', purple: '#a78bfa', gold: '#fbbf24', text: '#e5e7eb', mute: '#94a3b8', grid: 'rgba(148,163,184,.18)' }
 
 // =========================================
 // 🎨 PALET WARNA (SEDERHANA)
