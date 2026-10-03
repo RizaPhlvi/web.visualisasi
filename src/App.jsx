@@ -180,3 +180,40 @@ function buildSlides(next, restart) {
     ),
   ]
 }
+
+export default function App() {
+  const [index, setIndex] = useState(0)
+  const [present, setPresent] = useState(false)
+  const last = 11
+  const go = useCallback((i) => setIndex(Math.max(0, Math.min(last, i))), [])
+  const next = useCallback(() => setIndex((i) => Math.min(last, i + 1)), [])
+  const prev = useCallback(() => setIndex((i) => Math.max(0, i - 1)), [])
+
+  const enter = () => { setPresent(true); document.documentElement.requestFullscreen?.().catch(() => {}) }
+  const exit = () => { setPresent(false); if (document.fullscreenElement) document.exitFullscreen?.() }
+
+  useEffect(() => {
+    const onKey = (e) => {
+      const k = e.key
+      if (k === 'ArrowRight' || k === ' ') { e.preventDefault(); next() }
+      else if (k === 'ArrowLeft') { e.preventDefault(); prev() }
+      else if (k === 'Home') go(0)
+      else if (k === 'End') go(last)
+      else if (k === 'f' || k === 'F') { present ? exit() : enter() }
+      else if (k === 'Escape' && present) setPresent(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [next, prev, go, present])
+
+  const slides = buildSlides(next, () => go(0))
+  const Current = slides[index]
+  return (
+    <div className={`deck ${present ? 'present' : ''}`}>
+      <div className="progress"><div style={{ width: `${((index + 1) / 12) * 100}%` }} /></div>
+      <Header present={present} onPresent={enter} onExit={exit} />
+      <main className="stage" key={index}><Current /></main>
+      <Navigation index={index} total={12} onPrev={prev} onNext={next} onGo={go} />
+    </div>
+  )
+}
