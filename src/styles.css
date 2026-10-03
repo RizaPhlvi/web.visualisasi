@@ -92,3 +92,95 @@ h2 { font-size: clamp(24px, 3vw, 44px); font-weight: 700; letter-spacing: -.01em
 
 .tilt-wrap { height: 100%; transform-style: preserve-3d; }
 .tilt-wrap > .card { height: 100%; }
+
+/* =========================================
+   🔧 1. PERBAIKAN VIEWPORT & BUG FULLSCREEN
+   ========================================= */
+html, body, #root { 
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  overflow: hidden; /* Mencegah body ikut ter-scroll secara tidak sengaja */
+}
+
+.deck { 
+  height: 100vh; 
+  height: 100dvh; /* Gunakan dvh (dynamic viewport height) agar fullscreen presisi */
+  display: grid; 
+  grid-template-rows: auto 1fr auto; 
+  overflow: hidden; 
+}
+
+.stage { 
+  min-height: 0; 
+  padding: 0 4vw; 
+  animation: fadeUp .5s ease both; 
+  overflow: hidden; /* Mencegah konten slide tumpah keluar area */
+  display: flex;
+  flex-direction: column;
+}
+
+.slide { 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 2vh 0; 
+  min-height: 0; 
+  flex: 1;
+  overflow: hidden; /* Kunci konten agar tidak menimpa header/footer */
+}
+
+
+/* =========================================
+   📊 2. PERBAIKAN CHART YANG HILANG (RECHARTS)
+   ========================================= */
+/* Recharts butuh tinggi parent yang pasti agar tidak collapse menjadi 0px di mode fullscreen */
+.card.chart { 
+  padding: 2vh 1.5vw; 
+  min-height: 250px; /* Tinggi minimal agar grafik tidak hilang */
+  min-width: 0; 
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Pastikan mengisi ruang di layout split */
+}
+
+.card.chart.full { 
+  flex: 1; 
+  min-height: 300px; 
+  height: 100%;
+}
+
+
+/* =========================================
+   📝 3. PERBAIKAN TEKS NABRAK DI SLIDE KESIMPULAN
+   ========================================= */
+/* Mengganti flex: 0 (yang membuat teks kaku) menjadi flex: 1 agar responsif */
+.closing .slide-body { 
+  flex: 1; 
+  min-height: 0; 
+  justify-content: center; 
+  gap: clamp(1vh, 2vh, 3vh); /* Jarak antar elemen otomatis menyesuaikan layar */
+  overflow: hidden; 
+  padding-bottom: 2vh;
+}
+
+.closing { 
+  justify-content: center; 
+  gap: clamp(1vh, 2vh, 3vh); 
+}
+
+/* Pengecilan font agresif khusus slide kesimpulan agar muat di layar kecil/proyektor */
+.closing .big { 
+  font-size: clamp(36px, 6vw, 90px); /* Batas maksimal dikecilkan sedikit */
+  line-height: 1.1; 
+}
+
+.closing .lead { 
+  font-size: clamp(14px, 1.2vw, 20px); 
+  line-height: 1.4; 
+}
+
+.closing .takeaway p {
+  font-size: clamp(13px, 1.1vw, 18px);
+  line-height: 1.4;
+}
