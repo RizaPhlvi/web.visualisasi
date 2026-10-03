@@ -257,3 +257,54 @@ h2 {
 .present .lead {
   font-size: clamp(16px, 1.6vw, 22px);
 }
+
+/* =========================================
+   🧭 TOMBOL SUDUT: PREV KIRI BAWAH, NEXT KANAN BAWAH
+   ========================================= */
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 3vw 18px;
+  gap: 16px;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(11, 18, 32, 0.85), transparent);
+}
+
+.nav > * { pointer-events: auto; }
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-prev,
+.nav-next {
+  min-width: 140px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+/* Beri ruang di bawah slide agar konten tidak tertutup tombol */
+.stage { padding: 0 4vw 76px; }
+
+/* Mode presentasi: tombol sudut tetap ada tapi samar, jelas saat hover */
+.present .nav {
+  display: flex !important;
+  opacity: 0.25;
+  transition: opacity 0.25s ease;
+}
+.present .nav:hover { opacity: 1; }
+
+/* Layar kecil: sembunyikan dot agar tombol tidak berdesakan */
+@media (max-width: 900px) {
+  .nav-center { display: none; }
+  .nav-prev, .nav-next { min-width: 0; }
+}
