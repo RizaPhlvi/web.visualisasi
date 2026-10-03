@@ -45,24 +45,31 @@ function buildSlides(next, restart) {
       </Slide>
     ),
 
-    // 03 — TREN IMPOR (JAWABAN PERTANYAAN)
-    () => (
-      <Slide no={3} title="Desember mencatat nilai impor tertinggi">
-        <div className="split">
-          <div className="card chart"><TrendLine data={MONTHLY} dataKey="total" name="Total Impor" /></div>
-          <div className="side">
-            <div className="card mini">
-              <span>Puncak Impor · Desember</span>
-              <b>US$23,77 Miliar</b>
-            </div>
-            <div className="card insight">
-              <p>Nilai impor berfluktuasi sepanjang tahun, namun mencapai puncaknya di Desember (US$23,77 M) dan terendah di Januari (US$17,86 M).</p>
-            </div>
-          </div>
+   // 03 — TREN IMPOR
+() => (
+  <Slide no={3} title="Desember mencatat nilai impor tertinggi">
+    <div className="split">
+      <div className="card chart">
+        <TrendLine 
+          data={MONTHLY} 
+          dataKey="total" 
+          name="Total Impor" 
+          maxPoint={{ bulan: sTotal.maxBulan, nilai: sTotal.max }}
+          minPoint={{ bulan: sTotal.minBulan, nilai: sTotal.min }}
+        />
+      </div>
+      <div className="side">
+        <div className="card mini">
+          <span>Puncak Impor · Desember</span>
+          <b>US$23,77 Miliar</b>
         </div>
-      </Slide>
-    ),
-
+        <div className="card insight">
+          <p>Nilai impor berfluktuasi sepanjang tahun, mencapai puncaknya di <b>Desember (US$23,77 M)</b> dan terendah di <b>Januari (US$17,86 M)</b>.</p>
+        </div>
+      </div>
+    </div>
+  </Slide>
+),
     // 04 — STRUKTUR IMPOR (KOMPOSISI)
     () => (
       <Slide no={4} title="Bahan baku mendominasi impor Indonesia">
