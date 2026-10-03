@@ -17,6 +17,31 @@ function Insight({ children, index = 0 }) {
   return <MotionCard className="card insight" index={index}><span className="tag">INSIGHT</span><p>{children}</p></MotionCard>
 }
 
+function GroupSlide({ no, title, dataKey, color, name, extra }) {
+  const s = stats(dataKey);
+  return (
+    <Slide no={no} title={title}>
+      <div className="split">
+        <div className="card chart">
+          <TrendLine 
+            data={MONTHLY} 
+            dataKey={dataKey} 
+            color={color} 
+            name={name}
+            maxPoint={{ bulan: s.maxBulan, nilai: s.max }}
+            minPoint={{ bulan: s.minBulan, nilai: s.min }}
+          />
+        </div>
+        <div className="side">
+          <div className="card mini"><span>Tertinggi · {s.maxBulan}</span><b>{fmt(s.max)}</b><small>juta US$</small></div>
+          <div className="card mini"><span>Terendah · {s.minBulan}</span><b>{fmt(s.min)}</b><small>juta US$</small></div>
+          <Insight>{extra ?? `Dari Januari ke Desember nilainya berubah ${signed(s.change)}.`}</Insight>
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
 function buildSlides(next, restart) {
   return [
     // 01 — COVER
