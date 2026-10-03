@@ -1,22 +1,22 @@
 /* =========================================
-   🎨 1. VARIABEL WARNA & RESET DASAR
+   🎨 VARIABEL WARNA (SEDERHANA & PROFESIONAL)
    ========================================= */
 :root { 
   --bg: #0b1220; 
-  --bg2: #101a2f; 
-  --text: #f1f5f9; 
+  --bg2: #101a2f;
+  --text: #f8fafc; 
   --mute: #94a3b8; 
-  --cyan: #22d3ee; 
-  --blue: #3b82f6; 
-  --purple: #a78bfa; 
-  --gold: #fbbf24; 
+  --cyan: #22d3ee;
+  --blue: #3b82f6;
+  --purple: #a78bfa;
+  --gold: #fbbf24;
   --line: rgba(148,163,184,.22); 
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body, #root { 
-  width: 100%;
+  width: 100%; 
   height: 100%; 
   margin: 0; 
   padding: 0; 
@@ -34,7 +34,7 @@ body {
 button { font: inherit; color: inherit; cursor: pointer; }
 
 /* =========================================
-   🚀 2. PERBAIKAN FULLSCREEN (ANTI-CELAH)
+   🚀 FULLSCREEN FIX
    ========================================= */
 :fullscreen {
   width: 100%;
@@ -55,6 +55,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
   transform: translateZ(0);
 }
 
+/* =========================================
+   📐 LAYOUT & TYPOGRAPHY PROYEKTOR
+   ========================================= */
 .progress { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,.06); z-index: 10; }
 .progress div { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--purple)); transition: width .4s ease; }
 
@@ -66,63 +69,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .present .topbar { position: fixed; right: 0; top: 0; z-index: 9; opacity: .35; transition: opacity .2s; }
 .present .topbar:hover { opacity: 1; }
 
-/* =========================================
-   ✨ 3. ANIMASI TOMBOL (SMOOTH & INTERACTIVE)
-   ========================================= */
-.btn { 
-  background: rgba(255, 255, 255, 0.06); 
-  border: 1px solid var(--line); 
-  border-radius: 12px; 
-  padding: 10px 20px; 
-  color: var(--text); 
-  font-weight: 500; 
-  cursor: pointer; 
-  position: relative; 
-  overflow: hidden; 
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-  transform: translateY(0); 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-.btn:hover:not(:disabled) { 
-  background: rgba(255, 255, 255, 0.12); 
-  border-color: rgba(255, 255, 255, 0.3); 
-  transform: translateY(-2px) scale(1.02); 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); 
-}
-.btn:active:not(:disabled) { 
-  transform: translateY(1px) scale(0.98); 
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); 
-  transition: all 0.1s; 
-}
-.btn:disabled { opacity: .3; cursor: default; transform: none; box-shadow: none; }
-.btn.ghost { padding: 6px 14px; font-size: 13px; }
-
-.btn.primary { 
-  background: linear-gradient(90deg, var(--cyan), var(--blue)); 
-  color: #04101f; 
-  font-weight: 700; 
-  border: 0; 
-  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2); 
-}
-.btn.primary:hover { 
-  filter: brightness(1.15); 
-  box-shadow: 0 6px 24px rgba(34, 211, 238, 0.5); 
-  transform: translateY(-3px) scale(1.03); 
-}
-.btn.big { padding: 16px 36px; font-size: 20px; margin-top: 40px; }
-
-.nav button { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-.nav button:hover:not(:disabled) { color: var(--cyan); transform: scale(1.1); }
-.nav button:active:not(:disabled) { transform: scale(0.9); }
-
-.dots { display: flex; align-items: center; gap: 8px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; border: 0; background: rgba(255,255,255,.2); padding: 0; transition: all 0.3s ease; }
-.dot.on { background: var(--cyan); transform: scale(1.3); }
-.counter { margin-left: 14px; color: var(--mute); font-variant-numeric: tabular-nums; font-size: 14px; }
-
-/* =========================================
-   📐 4. LAYOUT STAGE & SLIDE
-   ========================================= */
 .stage { 
   min-height: 0; 
   width: 100%; 
@@ -149,13 +95,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .slide-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 2.4vh; }
 .slide-no { color: var(--cyan); font-weight: 700; font-size: clamp(16px, 1.6vw, 24px); }
-h2 { font-size: clamp(24px, 3vw, 44px); font-weight: 700; letter-spacing: -.01em; }
+
+/* Judul Slide: Besar & Tegas (PROYEKTOR READY) */
+h2 { 
+  font-size: clamp(32px, 5vw, 64px); 
+  font-weight: 800; 
+  letter-spacing: -0.02em; 
+  line-height: 1.1;
+  margin-bottom: 3vh;
+}
+
 .slide-body { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 2vh; }
 
 .card { background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.025)); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.25); backdrop-filter: blur(6px); }
 
 /* =========================================
-   📊 5. PERBAIKAN CHART (RECHARTS)
+   📊 CHART & LAYOUT
    ========================================= */
 .card.chart { 
   padding: 2vh 1.5vw; 
@@ -181,18 +136,42 @@ h2 { font-size: clamp(24px, 3vw, 44px); font-weight: 700; letter-spacing: -.01em
 
 .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 8px; }
 
-.insight, .takeaway { padding: 2.4vh 1.5vw; border-left: 4px solid var(--gold); animation: fadeUp .7s .2s ease both; }
-.insight p, .takeaway p { font-size: clamp(15px, 1.35vw, 22px); line-height: 1.55; margin-top: 8px; }
+/* Insight Card: Lebih menonjol */
+.insight, .takeaway { 
+  padding: 2.4vh 1.5vw; 
+  border-left: 4px solid var(--gold); 
+  animation: fadeUp .7s .2s ease both; 
+}
+.insight p, .takeaway p { 
+  font-size: clamp(18px, 2vw, 28px); 
+  line-height: 1.55; 
+  margin-top: 8px; 
+}
 .tag { color: var(--gold); font-size: 12px; letter-spacing: .2em; font-weight: 700; }
 .note { color: var(--mute); font-size: clamp(13px, 1.1vw, 17px); }
-.lead { font-size: clamp(16px, 1.5vw, 24px); line-height: 1.6; color: #cbd5e1; max-width: 70ch; }
+.lead { font-size: clamp(18px, 2vw, 28px); line-height: 1.6; color: #cbd5e1; max-width: 70ch; }
 
+/* =========================================
+   📈 KPI (ANGKA UTAMA)
+   ========================================= */
 .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5vw; }
 .kpi { padding: 3vh 1.4vw; animation: fadeUp .6s ease both; }
 .kpi-label { color: var(--mute); font-size: clamp(13px, 1.1vw, 17px); letter-spacing: .08em; text-transform: uppercase; }
-.kpi-value { font-size: clamp(28px, 3.2vw, 54px); font-weight: 800; margin: 1.2vh 0 .4vh; background: linear-gradient(90deg, #fff, var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+.kpi-value { 
+  font-size: clamp(36px, 4.5vw, 72px); 
+  font-weight: 800; 
+  margin: 1.2vh 0 .4vh; 
+  background: linear-gradient(90deg, #fff, var(--cyan)); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent; 
+  font-variant-numeric: tabular-nums; 
+}
 .kpi-unit, .kpi-sub { color: var(--mute); font-size: clamp(13px, 1.2vw, 18px); }
 
+/* =========================================
+   🏠 COVER SLIDE
+   ========================================= */
 .cover { justify-content: center; align-items: flex-start; }
 .cover .eyebrow { color: var(--cyan); letter-spacing: .35em; font-size: clamp(12px, 1.1vw, 16px); margin-bottom: 3vh; }
 .cover h1 { font-size: clamp(36px, 6vw, 96px); line-height: 1.02; font-weight: 800; max-width: 14ch; background: linear-gradient(90deg, #fff 30%, var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -200,58 +179,101 @@ h2 { font-size: clamp(24px, 3vw, 44px); font-weight: 700; letter-spacing: -.01em
 .meta { display: flex; gap: 1.5vw; margin-top: 4vh; flex-wrap: wrap; }
 .meta span { border: 1px solid var(--line); border-radius: 999px; padding: 8px 18px; color: #cbd5e1; font-size: clamp(13px, 1.2vw, 18px); }
 
-.cards5 { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 1fr 1fr; gap: 1.6vw; min-height: 0; }
-.cards5 .ins:nth-child(1) { grid-column: 1 / 3; } 
-.cards5 .ins:nth-child(2) { grid-column: 3 / 5; } 
-.cards5 .ins:nth-child(3) { grid-column: 5 / 7; }
-.cards5 .ins:nth-child(4) { grid-column: 1 / 4; } 
-.cards5 .ins:nth-child(5) { grid-column: 4 / 7; }
-.ins { padding: 2.5vh 1.6vw; display: flex; flex-direction: column; justify-content: center; gap: 1vh; animation: fadeUp .6s ease both; }
-.ins-no { color: var(--gold); font-weight: 800; font-size: clamp(16px, 1.5vw, 24px); }
-.ins p { color: var(--mute); font-size: clamp(13px, 1.2vw, 19px); }
-.ins b { font-size: clamp(18px, 1.9vw, 30px); line-height: 1.25; }
+/* =========================================
+   📋 SLIDE 11: 3 TEMUAN UTAMA
+   ========================================= */
+.insight-grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6vw; min-height: 0; }
+.insight-card { 
+  padding: 2.5vh 1.6vw; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  gap: 1vh; 
+  animation: fadeUp .6s ease both; 
+}
+.insight-card .num { color: var(--gold); font-weight: 800; font-size: clamp(16px, 1.5vw, 24px); }
+.insight-card h3 { font-size: clamp(18px, 2vw, 28px); font-weight: 700; line-height: 1.2; margin-top: 8px; }
+.insight-card p { color: var(--mute); font-size: clamp(14px, 1.4vw, 20px); line-height: 1.5; margin-top: 8px; }
 
 /* =========================================
-   📝 6. PERBAIKAN TEKS NABRAK (SLIDE KESIMPULAN)
+   🏁 SLIDE KESIMPULAN
    ========================================= */
-.closing { justify-content: center; gap: clamp(1vh, 2vh, 3vh); }
-.closing .slide-body { 
-  flex: 1; 
-  min-height: 0; 
-  justify-content: center; 
-  gap: clamp(1vh, 2vh, 3vh); 
-  overflow: hidden; 
-  padding-bottom: 2vh; 
-}
+.closing { justify-content: center; gap: 3vh; }
+.closing .slide-body { flex: 1; min-height: 0; justify-content: center; gap: clamp(1vh, 2vh, 3vh); overflow: hidden; padding-bottom: 2vh; }
 .closing .big { 
-  font-size: clamp(36px, 6vw, 90px); 
-  line-height: 1.1; 
+  font-size: clamp(48px, 8vw, 120px); 
+  font-weight: 800; 
+  line-height: 1; 
+  background: linear-gradient(90deg, #fff, var(--gold)); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent; 
 }
-.closing .lead { 
-  font-size: clamp(14px, 1.2vw, 20px); 
-  line-height: 1.4; 
-}
-.closing .takeaway p { 
-  font-size: clamp(13px, 1.1vw, 18px); 
-  line-height: 1.4; 
-}
-.big { font-weight: 800; line-height: 1; background: linear-gradient(90deg, #fff, var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.big small { font-size: .3em; color: var(--mute); -webkit-text-fill-color: var(--mute); }
+.closing .big small { font-size: .3em; color: var(--mute); -webkit-text-fill-color: var(--mute); }
 .closing .btn { align-self: flex-start; }
 .takeaway { max-width: 70ch; }
 
-.tip { background: #0b1220; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.4); max-width: 340px; }
-.tip .mute { color: var(--mute); }
-.tip-val { font-weight: 700; color: var(--cyan); margin-top: 4px; font-size: 16px; }
+/* =========================================
+   🖱️ TOMBOL & NAVIGASI
+   ========================================= */
+.btn { 
+  background: rgba(255,255,255,.06); 
+  border: 1px solid var(--line); 
+  border-radius: 12px; 
+  padding: 10px 20px; 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+}
+.btn:hover:not(:disabled) { 
+  background: rgba(255,255,255,.14); 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.btn:active:not(:disabled) { 
+  transform: translateY(0) scale(0.98); 
+}
+.btn:disabled { opacity: .3; cursor: default; }
+.btn.ghost { padding: 6px 14px; font-size: 13px; }
+.btn.primary { background: linear-gradient(90deg, var(--cyan), var(--blue)); color: #04101f; font-weight: 700; border: 0; }
+.btn.big { padding: 16px 36px; font-size: 20px; margin-top: 40px; }
+
+.dots { display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 0; background: rgba(255,255,255,.2); padding: 0; }
+.dot.on { background: var(--cyan); transform: scale(1.3); }
+.counter { margin-left: 14px; color: var(--mute); font-variant-numeric: tabular-nums; font-size: 14px; }
 
 /* =========================================
-   📱 7. RESPONSIVE (MOBILE / TABLET)
+   🎬 MODE PRESENTASI (POWERPOINT STYLE)
+   ========================================= */
+.present .topbar, 
+.present .nav, 
+.present .progress { 
+  display: none !important; 
+}
+
+.present .stage { 
+  padding: 0 6vw; 
+  align-items: center;
+  justify-content: center;
+}
+
+.present .slide { 
+  width: 100%; 
+  max-width: 1600px; 
+  height: 100vh; 
+  justify-content: center; 
+}
+
+.present h2 { font-size: clamp(40px, 6vw, 80px); }
+.present .insight p, .present .lead { font-size: clamp(24px, 3vw, 40px); }
+
+/* =========================================
+   📱 RESPONSIVE (MOBILE)
    ========================================= */
 @media (max-width: 900px) {
   body { overflow: auto; }
   .split { grid-template-columns: 1fr; }
   .card.chart { height: 46vh; }
   .kpis { grid-template-columns: 1fr 1fr; }
-  .cards5 { grid-template-columns: 1fr; grid-template-rows: none; }
-  .cards5 .ins:nth-child(n) { grid-column: auto; }
+  .insight-grid { grid-template-columns: 1fr; }
+  .insight-card { grid-column: auto; }
 }
