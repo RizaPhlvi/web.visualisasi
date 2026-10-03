@@ -228,3 +228,32 @@ h2 {
   .kpis { grid-template-columns: 1fr 1fr; }
   .insight-grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   🔎 OVERRIDE: FONT INSIGHT LEBIH KECIL
+   ========================================= */
+.insight p,
+.takeaway p {
+  font-size: clamp(13px, 1.1vw, 17px);
+  line-height: 1.5;
+}
+
+.lead {
+  font-size: clamp(14px, 1.3vw, 19px);
+  line-height: 1.55;
+}
+
+.note {
+  font-size: clamp(12px, 1vw, 15px);
+}
+
+.insight-card p {
+  font-size: clamp(13px, 1.1vw, 16px);
+}
+
+/* Mode presentasi tetap sedikit lebih besar agar terbaca dari proyektor */
+.present .insight p,
+.present .takeaway p,
+.present .lead {
+  font-size: clamp(16px, 1.6vw, 22px);
+}
