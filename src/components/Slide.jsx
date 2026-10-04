@@ -1,3 +1,5 @@
+import { SUMBER } from '../data'
+
 // Satu slide = satu pesan. Judul berupa kalimat temuan; kicker menunjukkan peran slide dalam alur cerita.
 export default function Slide({ no, kicker, title, children, className = '' }) {
   return (
@@ -9,6 +11,7 @@ export default function Slide({ no, kicker, title, children, className = '' }) {
         </header>
       )}
       <div className="slide-body">{children}</div>
+      <p className="source">{SUMBER}</p>
     </section>
   )
 }

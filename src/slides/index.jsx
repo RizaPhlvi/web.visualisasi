@@ -71,7 +71,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 1, render: (st) => (
-    <Slide no={3} kicker="Tren" title="Impor naik sepanjang tahun dan memuncak di Desember">
+    <Slide no={3} kicker="Tren" title="Impor bergerak naik-turun, lalu melonjak di Desember">
       <div className="split">
         <div className="card chart">
           <TrendLine data={MONTHLY} dataKey="total" name="Total impor" domain={[16000, 24000]} maxPoint={{ bulan: sT.maxBulan, nilai: sT.max }} minPoint={{ bulan: sT.minBulan, nilai: sT.min }} />
@@ -79,7 +79,7 @@ export default (ctx) => [
         </div>
         <div className="side">
           <Mini label={`Puncak · ${sT.maxBulan}`} value={`US$${M(sT.max)} M`} sub="miliar US$" />
-          <Insight show={st >= 1} big={signed(sT.change)}>Desember dibanding Januari (US${M(sT.max)} M vs US${M(sT.min)} M).</Insight>
+          <Insight show={st >= 1} big={signed(sT.change)}>Januari ke Desember. Kenaikan terjadi bertahap, dengan beberapa penurunan pada Mei, Juni, Agustus, dan November.</Insight>
         </div>
       </div>
     </Slide>) },
@@ -128,10 +128,11 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 0, render: () => (
-    <Slide no={10} kicker="Per bulan" title="Dominasi bahan baku konsisten di setiap bulan">
-      <div className="card chart full">
+    <Slide no={10} kicker="Per bulan" title="Bahan baku tetap jadi porsi terbesar tiap bulan">
+      <div className="card chart">
         <StackedMonths data={MONTHLY} />
         <Legend items={[['Bahan baku', C.cyan], ['Barang modal', C.blue], ['Barang konsumsi', C.gray]]} />
+        <p className="note">Porsinya bergerak dari 74,2% (Februari) ke 67,4% (September), namun tidak pernah bergeser dari posisi teratas.</p>
       </div>
     </Slide>) },
 
