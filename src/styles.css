@@ -30,6 +30,8 @@ h2 { font-family: var(--serif); font-size: 64px; font-weight: 700; line-height: 
 .card.chart { padding: 28px 32px 20px; min-width: 0; min-height: 0; display: flex; flex-direction: column; flex: 1; }
 .card.chart > .recharts-responsive-container, .card.chart > .donut { flex: 1; min-height: 0; }
 .note { color: var(--mute); font-size: 22px; margin-top: 8px; }
+.source { color: var(--mute); opacity: .75; font-size: 16px; line-height: 1.35; margin-top: 14px; letter-spacing: .01em; }
+.cover .source, .closing .source { margin-top: 24px; max-width: 1400px; }
 .split { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.75fr 1fr; gap: 32px; }
 .split.wide { grid-template-columns: 2.5fr 1fr; }
 .side { display: flex; flex-direction: column; gap: 24px; justify-content: center; min-height: 0; }
