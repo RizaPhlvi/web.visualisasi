@@ -1,10 +1,10 @@
-// Pembungkus satu slide: judul + isi. key pada App membuat animasi diputar ulang tiap pindah slide.
-export default function Slide({ no, title, children, className = '' }) {
+// Satu slide = satu pesan. Judul berupa kalimat temuan; kicker menunjukkan peran slide dalam alur cerita.
+export default function Slide({ no, kicker, title, children, className = '' }) {
   return (
     <section className={`slide ${className}`}>
       {title && (
         <header className="slide-head">
-          <span className="slide-no">{String(no).padStart(2, '0')}</span>
+          <p className="kicker"><span>{String(no).padStart(2, '0')}</span>{kicker}</p>
           <h2>{title}</h2>
         </header>
       )}
