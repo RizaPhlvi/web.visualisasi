@@ -121,3 +121,9 @@ body.moved .present .chrome, .present .chrome:focus-within { opacity: 1; pointer
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition-duration: .01ms !important; } }
 @media (max-width: 700px) { .chrome.bottom .dots { display: none; } }
 .split.wide .insight-big { font-size: 48px; }
+
+/* Slide anggota kelompok: 5 kartu sejajar horizontal, nama lalu NIM di bawahnya */
+.members { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; align-content: center; }
+.member { padding: 36px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; border-top: 6px solid var(--cyan); min-width: 0; }
+.member-name { font-size: 28px; font-weight: 700; line-height: 1.3; font-family: var(--sans); }
+.member-nim { color: var(--mute); font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .04em; }

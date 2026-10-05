@@ -2,7 +2,7 @@ import Slide from '../components/Slide'
 import KPI, { Hero } from '../components/KPI'
 import Insight, { Mini, Legend } from '../components/Insight'
 import { TrendLine, Donut, HBar, StackedMonths } from '../components/Charts'
-import { MONTHLY, GOLONGAN, TOP10, JUMLAH, fmt, stats } from '../data'
+import { MONTHLY, GOLONGAN, TOP10, JUMLAH, ANGGOTA, fmt, stats } from '../data'
 import { C, GROUP, M } from '../theme'
 
 // Semua angka turunan dihitung dari data.js (tidak ada angka baru).
@@ -47,8 +47,21 @@ export default (ctx) => [
       <div className="cover-stat"><span>Total impor setahun</span><Hero value={JUMLAH / 1000} prefix="US$" suffix=" M" className="cover-num" /><small>miliar US$</small></div>
     </Slide>) },
 
+
+  { steps: 0, render: () => (
+    <Slide no={2} kicker="Tim" title="Anggota kelompok" className="team">
+      <div className="members">
+        {ANGGOTA.map((a) => (
+          <article key={a.nim} className="card member">
+            <h3 className="member-name">{a.nama}</h3>
+            <span className="member-nim">{a.nim}</span>
+          </article>
+        ))}
+      </div>
+    </Slide>) },
+
   { steps: 1, render: (st) => (
-    <Slide no={2} kicker="Gambaran besar" title="Impor 2025 ditopang bahan baku">
+    <Slide no={3} kicker="Gambaran besar" title="Impor 2025 ditopang bahan baku">
       <div className="split snap">
         <div className="card hero-card">
           <span className="hero-label">Total impor 2025</span>
@@ -71,7 +84,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 1, render: (st) => (
-    <Slide no={3} kicker="Tren" title="Impor bergerak naik-turun, lalu melonjak di Desember">
+    <Slide no={4} kicker="Tren" title="Impor bergerak naik-turun, lalu melonjak di Desember">
       <div className="split">
         <div className="card chart">
           <TrendLine data={MONTHLY} dataKey="total" name="Total impor" domain={[16000, 24000]} maxPoint={{ bulan: sT.maxBulan, nilai: sT.max }} minPoint={{ bulan: sT.minBulan, nilai: sT.min }} />
@@ -85,7 +98,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 0, render: () => (
-    <Slide no={4} kicker="Komposisi" title="Bahan baku mendominasi impor Indonesia">
+    <Slide no={5} kicker="Komposisi" title="Bahan baku mendominasi impor Indonesia">
       <div className="split">
         <div className="card chart">
           <Donut data={GOLONGAN} center={<><b>{fmt(BB.persen)}%</b><span>bahan baku</span></>} />
@@ -96,7 +109,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 0, render: () => (
-    <Slide no={5} kicker="Perbandingan" title="Bahan baku jauh melampaui dua golongan lain">
+    <Slide no={6} kicker="Perbandingan" title="Bahan baku jauh melampaui dua golongan lain">
       <div className="split">
         <div className="card chart"><HBar data={byValue} labelKey="golongan" yWidth={260} colorBy={(d) => d.golongan} format={M} /></div>
         <div className="side">
@@ -107,14 +120,14 @@ export default (ctx) => [
       </div>
     </Slide>) },
 
-  { steps: 1, render: (st) => <Trend step={st} no={6} kicker="Per golongan" title="Impor barang konsumsi naik, tetapi tetap yang terkecil" dataKey="konsumsi" color={C.gray} name="Barang konsumsi" s={sK} stat={signed(sK.change)}>Januari ke Desember; porsinya hanya {fmt(KS.persen)}% dari total.</Trend> },
+  { steps: 1, render: (st) => <Trend step={st} no={7} kicker="Per golongan" title="Impor barang konsumsi naik, tetapi tetap yang terkecil" dataKey="konsumsi" color={C.gray} name="Barang konsumsi" s={sK} stat={signed(sK.change)}>Januari ke Desember; porsinya hanya {fmt(KS.persen)}% dari total.</Trend> },
 
-  { steps: 1, render: (st) => <Trend step={st} no={7} kicker="Per golongan" title="Bahan baku bertahan di level tertinggi sepanjang tahun" dataKey="bahanBaku" color={C.cyan} name="Bahan baku" s={sB} stat={`US$${M(BB.nilai)} M`}>Setahun penuh, {fmt(BB.persen)}% dari total. Kelompok ini mencakup antara lain bahan bakar & pelumas serta suku cadang.</Trend> },
+  { steps: 1, render: (st) => <Trend step={st} no={8} kicker="Per golongan" title="Bahan baku bertahan di level tertinggi sepanjang tahun" dataKey="bahanBaku" color={C.cyan} name="Bahan baku" s={sB} stat={`US$${M(BB.nilai)} M`}>Setahun penuh, {fmt(BB.persen)}% dari total. Kelompok ini mencakup antara lain bahan bakar & pelumas serta suku cadang.</Trend> },
 
-  { steps: 1, render: (st) => <Trend step={st} no={8} kicker="Temuan" title={`Barang modal tumbuh paling cepat: ${signed(sM.change)}`} dataKey="modal" color={C.blue} name="Barang modal" s={sM} stat={signed(sM.change)}>Januari ke Desember, lebih tinggi daripada bahan baku ({signed(sB.change)}) dan konsumsi ({signed(sK.change)}). Porsi total {fmt(MD.persen)}%.</Trend> },
+  { steps: 1, render: (st) => <Trend step={st} no={9} kicker="Temuan" title={`Barang modal tumbuh paling cepat: ${signed(sM.change)}`} dataKey="modal" color={C.blue} name="Barang modal" s={sM} stat={signed(sM.change)}>Januari ke Desember, lebih tinggi daripada bahan baku ({signed(sB.change)}) dan konsumsi ({signed(sK.change)}). Porsi total {fmt(MD.persen)}%.</Trend> },
 
   { steps: 2, render: (st) => (
-    <Slide no={9} kicker="Rincian kategori" title={`Sepuluh kategori menyumbang ${fmt(top10Pct)}% impor`}>
+    <Slide no={10} kicker="Rincian kategori" title={`Sepuluh kategori menyumbang ${fmt(top10Pct)}% impor`}>
       <div className="split wide">
         <div className="card chart">
           <HBar data={TOP10} labelKey="nama" yWidth={440} colorBy={(d) => d.kelompok} spotlight={st >= 1 ? 0 : null} />
@@ -128,7 +141,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 0, render: () => (
-    <Slide no={10} kicker="Per bulan" title="Bahan baku tetap jadi porsi terbesar tiap bulan">
+    <Slide no={11} kicker="Per bulan" title="Bahan baku tetap jadi porsi terbesar tiap bulan">
       <div className="card chart">
         <StackedMonths data={MONTHLY} />
         <Legend items={[['Bahan baku', C.cyan], ['Barang modal', C.blue], ['Barang konsumsi', C.gray]]} />
@@ -137,7 +150,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 3, render: (st) => (
-    <Slide no={11} kicker="Ringkasan" title="Tiga temuan utama">
+    <Slide no={12} kicker="Ringkasan" title="Tiga temuan utama">
       <div className="finds">
         {[[`${fmt(BB.persen)}%`, 'Didominasi bahan baku', 'dari total impor 2025'], [`US$${M(sT.max)} M`, 'Puncak di Desember', 'nilai impor bulanan tertinggi'], [`US$${M(TOP10[0].nilai)} M`, 'Kategori terbesar', 'Bahan Baku Untuk Industri (Processed)']].map(([n, h, p], i) => (
           <article key={h} className="card find" style={{ opacity: st > i ? 1 : 0.12 }}><b>{n}</b><h3>{h}</h3><p>{p}</p></article>
@@ -146,7 +159,7 @@ export default (ctx) => [
     </Slide>) },
 
   { steps: 0, render: () => (
-    <Slide no={12} kicker="Kesimpulan" title="Struktur impor ditopang bahan baku" className="closing">
+    <Slide no={13} kicker="Kesimpulan" title="Struktur impor ditopang bahan baku" className="closing">
       <Hero value={JUMLAH / 1000} prefix="US$" suffix=" miliar" className="closing-num" />
       <p className="lead">Impor Indonesia 2025 terutama ditopang kebutuhan bahan baku, dan nilainya mencapai titik tertinggi pada Desember.</p>
       <button className="btn" onClick={ctx.restart}>Ulang dari awal</button>
