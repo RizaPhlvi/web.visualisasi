@@ -8,6 +8,7 @@ export const ANGGOTA = [
   { nim: '60125038', nama: 'Farkhan Yazid Aghniya' },
   { nim: '60125055', nama: 'Aliyu Ibrahim Ahmad' },
 ]
+
 export const BULAN = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
 export const TOTAL = [17861.3, 18778.9, 18891.8, 20528.4, 20274.5, 19295.9, 20544.3, 19364.3, 20467, 21812.4, 19772.7, 23771.1]
 export const KONSUMSI = [1644.5, 1466.8, 1741.7, 1702.9, 1827, 1799.7, 2025.1, 1880.2, 1930.6, 2001.5, 1990.6, 2412.5]
